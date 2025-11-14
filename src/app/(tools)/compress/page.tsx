@@ -195,7 +195,7 @@ export default function CompressPage() {
                           value={outputFormat}
                           onValueChange={setOutputFormat}
                         >
-                          <SelectTrigger id="output-format" className="bg-muted/50 border-0">
+                          <SelectTrigger id="output-format" className="bg-muted/50">
                             <SelectValue placeholder="Select format" />
                           </SelectTrigger>
                           <SelectContent>

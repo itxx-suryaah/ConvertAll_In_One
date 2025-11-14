@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Combine, Menu, X } from "lucide-react";
+import { Combine, X } from "lucide-react";
 import { useState } from "react";
 
 import { cn } from "@/lib/utils";
@@ -29,10 +29,10 @@ function DesktopNav({ pathname }: { pathname: string | null }) {
             className={cn(
               "flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition-all duration-200 hover:text-foreground hover:bg-accent/50",
               pathname === tool.href &&
-                "bg-primary/80 text-foreground shadow-md border border-primary/30"
+                "bg-[#F5F5DC] text-black shadow-md border border-[#E6E1C5]"
             )}
           >
-            <tool.icon className="h-4 w-4" />
+            <tool.icon className="h-4 w-4 text-black" />
             <span>{tool.name}</span>
           </Link>
         ))}
@@ -55,11 +55,14 @@ function MobileNav({
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogTrigger asChild>
           <Button variant="ghost" size="icon">
-            <Menu className="h-6 w-6" />
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="size-20">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25" />
+</svg>
+
             <span className="sr-only">Open Menu</span>
           </Button>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="bg-[#F5F5DC] text-black border border-[#E6E1C5] shadow-md">
           <DialogHeader>
             <DialogTitle>
               <Link
@@ -67,14 +70,15 @@ function MobileNav({
                 className="flex items-center space-x-2"
                 onClick={() => setIsOpen(false)}
               >
-                <Combine className="h-6 w-6 text-primary" />
+                <Combine className="h-6 w-6 text-black" />
                 <span className="font-bold">Convert All In One</span>
               </Link>
             </DialogTitle>
-            <DialogClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
-              <X className="h-4 w-4" />
+
+
+
               <span className="sr-only">Close</span>
-            </DialogClose>
+
           </DialogHeader>
           <nav className="mt-6 flex flex-col space-y-1">
             {TOOLS.map((tool) => (
@@ -84,10 +88,10 @@ function MobileNav({
                 onClick={() => setIsOpen(false)}
                 className={cn(
                   "flex items-center gap-3 rounded-lg px-4 py-3 text-base font-medium text-muted-foreground transition-all duration-200 hover:text-foreground hover:bg-accent/50",
-                  pathname === tool.href && "bg-primary/80 text-foreground border border-primary/30 shadow-md"
+                  pathname === tool.href && "bg-[#FFFF] text-black border border-[#E6E1C5] shadow-md"
                 )}
               >
-                <tool.icon className="h-5 w-5" />
+                <tool.icon className="h-5 w-5 text-black" />
                 <span>{tool.name}</span>
               </Link>
             ))}
@@ -107,7 +111,7 @@ export function Header() {
       <div className="container mx-auto flex h-16 md:h-20 max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center flex-shrink-0">
           <Link href="/" className="flex items-center space-x-2">
-            <Combine className="h-5 w-5 md:h-6 md:w-6 text-primary" />
+            <Combine className="h-5 w-5 md:h-6 md:w-6 text-black" />
             <span className="hidden sm:inline-block font-bold text-base md:text-lg">
               Convert All In One
             </span>
